@@ -12,13 +12,12 @@ const authRoute = require("./routes/auth");
 const stripeRoute = require("./routes/stripe");
 const cors = require('cors')
 
-mongoose.connect
-(process.env.MONGO_URI || 'mongodb://localhost:27017/shop',
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      },
-);
+
+mongoose.connect(process.env.MONGO_URL
+).then(() => console.log("DB connection successful!"))
+.catch((err) => {
+console.log(err);
+});
 
 
 
