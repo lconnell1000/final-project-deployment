@@ -13,14 +13,13 @@ const stripeRoute = require("./routes/stripe");
 const cors = require('cors')
 
 
-
-
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/TodoApp', { useNewUrlParser: true })
-        .then(connect => console.log('connected to mongodb..'))
-        .catch(e => console.log('could not connect to mongodb', e))
-
-module.exports = {mongoose}
-
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost:27017/shop',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+  );
 
 
 
@@ -46,7 +45,9 @@ if(process.env.NODE_ENV === 'production'){
     // const clientStatic = path.join(__dirname, 'build');
     app.use(express.static(path.join(__dirname, 'build')));
 
-
+    // app.get('/admin', (req, res) => {
+    //     res.sendFile(path.join(__dirname, 'build2/index.html'));
+    // });
    
     app.get('/', (req, res) => {
         res.sendFile(path.join(__dirname, 'build/index.html'));
