@@ -13,7 +13,7 @@ const stripeRoute = require("./routes/stripe");
 const cors = require('cors')
 
 mongoose.connect
-(process.env.MONGO_URI || process.env.MONGO_URL,
+(process.env.MONGO_URI || 'mongodb://localhost:27017/shop',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
