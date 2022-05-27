@@ -12,12 +12,13 @@ const authRoute = require("./routes/auth");
 const stripeRoute = require("./routes/stripe");
 const cors = require('cors')
 
-
-mongoose.connect(process.env.MONGO_URL
-).then(() => console.log("DB connection successful!"))
-.catch((err) => {
-console.log(err);
-});
+mongoose.connect
+(process.env.MONGO_URI || process.env.MONGO_URL,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      },
+);
 
 
 
